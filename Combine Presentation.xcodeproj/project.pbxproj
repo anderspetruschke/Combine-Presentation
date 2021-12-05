@@ -13,6 +13,14 @@
 		9A20E0792759629200B37A57 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20E0672759629100B37A57 /* ContentView.swift */; };
 		9A20E07A2759629200B37A57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A20E0682759629200B37A57 /* Assets.xcassets */; };
 		9A20E07B2759629200B37A57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A20E0682759629200B37A57 /* Assets.xcassets */; };
+		9A39812F275CF9360043FD4E /* JustView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39812E275CF9360043FD4E /* JustView.swift */; };
+		9A398130275CF9360043FD4E /* JustView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A39812E275CF9360043FD4E /* JustView.swift */; };
+		9A398132275CF9410043FD4E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A398131275CF9410043FD4E /* TimerView.swift */; };
+		9A398133275CF9410043FD4E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A398131275CF9410043FD4E /* TimerView.swift */; };
+		9AB58DA027599CE0001C7333 /* EmojiGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB58D9F27599CE0001C7333 /* EmojiGridView.swift */; };
+		9AB58DA127599CE0001C7333 /* EmojiGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB58D9F27599CE0001C7333 /* EmojiGridView.swift */; };
+		9AB58DA327599FB5001C7333 /* PokemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB58DA227599FB5001C7333 /* PokemonView.swift */; };
+		9AB58DA427599FB5001C7333 /* PokemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB58DA227599FB5001C7333 /* PokemonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +30,10 @@
 		9A20E06D2759629200B37A57 /* Combine Presentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Combine Presentation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A20E0732759629200B37A57 /* Combine Presentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Combine Presentation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A20E0752759629200B37A57 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		9A39812E275CF9360043FD4E /* JustView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustView.swift; sourceTree = "<group>"; };
+		9A398131275CF9410043FD4E /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		9AB58D9F27599CE0001C7333 /* EmojiGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiGridView.swift; sourceTree = "<group>"; };
+		9AB58DA227599FB5001C7333 /* PokemonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,10 @@
 			children = (
 				9A20E0662759629100B37A57 /* Combine_PresentationApp.swift */,
 				9A20E0672759629100B37A57 /* ContentView.swift */,
+				9A39812E275CF9360043FD4E /* JustView.swift */,
+				9A398131275CF9410043FD4E /* TimerView.swift */,
+				9AB58DA227599FB5001C7333 /* PokemonView.swift */,
+				9AB58D9F27599CE0001C7333 /* EmojiGridView.swift */,
 				9A20E0682759629200B37A57 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -176,7 +192,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A398132275CF9410043FD4E /* TimerView.swift in Sources */,
+				9AB58DA327599FB5001C7333 /* PokemonView.swift in Sources */,
+				9AB58DA027599CE0001C7333 /* EmojiGridView.swift in Sources */,
 				9A20E0782759629200B37A57 /* ContentView.swift in Sources */,
+				9A39812F275CF9360043FD4E /* JustView.swift in Sources */,
 				9A20E0762759629200B37A57 /* Combine_PresentationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,7 +205,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A398133275CF9410043FD4E /* TimerView.swift in Sources */,
+				9AB58DA427599FB5001C7333 /* PokemonView.swift in Sources */,
+				9AB58DA127599CE0001C7333 /* EmojiGridView.swift in Sources */,
 				9A20E0792759629200B37A57 /* ContentView.swift in Sources */,
+				9A398130275CF9360043FD4E /* JustView.swift in Sources */,
 				9A20E0772759629200B37A57 /* Combine_PresentationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
