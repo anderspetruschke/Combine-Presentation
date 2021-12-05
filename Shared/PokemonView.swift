@@ -30,18 +30,18 @@ class PokemonViewModel: ObservableObject {
     }
     
     func setupSearchTextPublisher() {
-        searchTextCancellable = $searchText.debounce(for: .seconds(0.5), scheduler: RunLoop.main).sink(receiveCompletion: { _ in }, receiveValue: { value in
+        searchTextCancellable = $searchText
+            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+            .sink(receiveCompletion: { _ in }, receiveValue: { value in
             self.fetchPokemon(name: value)
         })
     }
     
     public func fetchPokemon(name: String) {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(name.lowercased())")!
+        let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(name.lowercased().filter{!$0.isWhitespace})")!
         pokemonCancellable = URLSession.shared.dataTaskPublisher(for: url)
             .tryMap() { (data, response) in
-                guard let httpResponse = response as? HTTPURLResponse,
-                      httpResponse.statusCode == 200
-                else {
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                     throw URLError(.badServerResponse)
                 }
                 return data
@@ -54,7 +54,7 @@ class PokemonViewModel: ObservableObject {
 }
 
 struct PokemonView: View {
-    @ObservedObject var viewModel = PokemonViewModel()
+    @StateObject var viewModel = PokemonViewModel()
     
     var body: some View {
         TextField("Enter Pokemon name or ID", text: $viewModel.searchText).textFieldStyle(RoundedBorderTextFieldStyle()).padding(10)
