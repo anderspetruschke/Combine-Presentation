@@ -1,13 +1,7 @@
-//
-//  EmojiGridView.swift
-//  Combine Presentation
-//
-//  Created by Anders Petruschke on 02.12.21.
-//
-
 import SwiftUI
 import Combine
 
+// Model
 // used to decode the data fetched from the backend
 struct EmojiData: Codable {
     let emojis: [String]
@@ -19,6 +13,7 @@ struct Emoji: Identifiable {
     let emojiString: String
 }
 
+// ViewModel
 // publishes the list of emojis
 class EmojiViewModel: ObservableObject {
     @Published var emojis : [Emoji] = []
@@ -69,8 +64,9 @@ class EmojiViewModel: ObservableObject {
     }
 }
 
-// view gets updated automatically if the emoji list changes
+//View
 struct EmojiGridView: View {
+    // view updates if this object changes
     @StateObject var viewModel = EmojiViewModel()
     
     let layout = [
@@ -81,7 +77,7 @@ struct EmojiGridView: View {
     ]
     
     var body: some View {
-        // orde emojis in grid
+        // order emojis in grid
         ScrollViewReader { scrollView in
             ScrollView {
                 LazyVGrid(columns: layout, spacing: 10) {

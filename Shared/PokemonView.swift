@@ -1,13 +1,8 @@
-//
-//  PokemonView.swift
-//  Combine Presentation
-//
-//  Created by Anders Petruschke on 03.12.21.
-//
-
 import SwiftUI
 import Combine
 
+// Model
+// Used to decode the data fetched from PokeAPI
 struct PokemonData: Codable {
     let name: String
     let id: Int
@@ -18,10 +13,16 @@ struct SpriteData: Codable {
     let front_default: String
 }
 
+// ViewModel
 class PokemonViewModel: ObservableObject {
+    // text typed into the search bar
     @Published var searchText: String = ""
+    // data fetched from PokeAPI and decoded as PokemonData
     @Published var currentPokemon: PokemonData?
     
+    // reference to cancellables
+    // so it will persist outside of their setup functions
+    // could be replaced with a set of cancellables
     var searchTextCancellable : AnyCancellable?
     var pokemonCancellable : AnyCancellable?
     
@@ -29,7 +30,9 @@ class PokemonViewModel: ObservableObject {
         setupSearchTextPublisher()
     }
     
+    // subscribes to the publisher of searchText
     func setupSearchTextPublisher() {
+        // use $ to access publisher of searchText
         searchTextCancellable = $searchText
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .sink(receiveCompletion: { _ in }, receiveValue: { value in
@@ -37,8 +40,11 @@ class PokemonViewModel: ObservableObject {
         })
     }
     
+    // fetches the data from the PokemonAPI
+    // if Pokemon does not exist, the currentPokemon will not be updated
     public func fetchPokemon(name: String) {
         let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(name.lowercased().filter{!$0.isWhitespace})")!
+        
         pokemonCancellable = URLSession.shared.dataTaskPublisher(for: url)
             .tryMap() { (data, response) in
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
@@ -53,11 +59,15 @@ class PokemonViewModel: ObservableObject {
     }
 }
 
+// View
 struct PokemonView: View {
+    // view will update when this updates
     @StateObject var viewModel = PokemonViewModel()
     
     var body: some View {
-        TextField("Enter Pokemon name or ID", text: $viewModel.searchText).textFieldStyle(RoundedBorderTextFieldStyle()).padding(10)
+        TextField("Enter Pokemon name or ID", text: $viewModel.searchText)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding(10)
         VStack {
             if let pokemon = viewModel.currentPokemon {
                 AsyncImage(url: URL(string: pokemon.sprites.front_default)) { phase in
@@ -94,6 +104,7 @@ struct PokemonView_Previews: PreviewProvider {
     }
 }
 
+//extension used to capitalize the first letter of a pokemons name
 extension String {
     func capitalizingFirstLetter() -> String {
       return prefix(1).uppercased() + self.lowercased().dropFirst()

@@ -15,8 +15,8 @@ struct ContentView: View {
                 NavigationLink(destination: TimerView().navigationTitle("Timer")) {
                     Text("Timer")
                 }
-                NavigationLink(destination: JustView().navigationTitle("Just + Input")) {
-                    Text("Just + Input")
+                NavigationLink(destination: JustView().navigationTitle("Just x 2")) {
+                    Text("Just x 2")
                 }
                 NavigationLink(destination: PokemonView().navigationTitle("Pokemon Searcher")) {
                     Text("Pokemon Searcher")
