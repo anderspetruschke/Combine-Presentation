@@ -1,3 +1,5 @@
+// link to send emojis: https://ios-emoji-picker.netlify.app/
+
 import SwiftUI
 import Combine
 
